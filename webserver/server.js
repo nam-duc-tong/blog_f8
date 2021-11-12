@@ -92,17 +92,30 @@
 //     res.end(data);
 // }).listen(2000);
 
-var http = require("http");
-var replaceStream = require('replacestream')
-    , fs = require('fs')
-    , path = require('path');
+//cach 2 dung replace stream
+// var http = require("http");
+// var replaceStream = require('replacestream')
+//     , fs = require('fs')
+//     , path = require('path');
 
-http.createServer(function(req,res){
-    res.writeHead(200,{"Content-Type":"text/html"});
-    var data = fs.createReadStream(__dirname+"/index.html").pipe(replaceStream("Tong Duc Nam","Lap trinh vien")).pipe(res);
-    // data = JSON.stringify(data);
-    // data.toString();
-    // data = data.;
-    // res.end(data);
-    // console.log(data.toString());
+// http.createServer(function(req,res){
+//     res.writeHead(200,{"Content-Type":"text/html"});
+//    fs.createReadStream(__dirname+"/index.html").pipe(replaceStream("Tong Duc Nam","Lap trinh vien")).pipe(res);
+
+// }).listen(2000);
+
+
+
+// webserver_Json
+var http = require("http");
+var fs = require("fs");
+
+http.createServer(function(req, res) {
+    res.writeHead(200,{"Content-Type":"application/json"});
+    var obj = {
+        name: 'Tong Duc Nam',
+        age: 21,
+        job: 'Lap trinh Vien'
+    }
+    res.end(JSON.stringify(obj));
 }).listen(2000);
